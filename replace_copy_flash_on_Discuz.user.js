@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name              replace copy flash on Discuz
-// @name:zh-CN        替换Discuz的复制flash 
-// @description       replace the "click here to copy" flash on Discuz
+// @name:zh-CN        替换Discuz的复制flash
+// @description       Replace the "click here to copy" flash on Discuz
 // @description:zh-CN 替换Discuz论坛的"点此复制到剪贴板"flash
 // @namespace         https://github.com/Testla
-// @version           0.9.0
-// @include           http://www.tsdm.me/*
-// @include           https://www.tsdm.me/*
+// @version           0.9.1
+// @include           http*://www.tsdm.me/*
+// @include           http*://www.lightnovel.cn/*
 // @author            Testla
 // @license           MIT License
 // @compatible        firefox 57 + Greasemonkey4/Tampermonkey tested
@@ -30,14 +30,17 @@
     // To switch to the non-privileged version:
     // 1. remove all @require and @grant in the header
     // 2. add @grant none to the same place
-    // 3. comment out the privileged version and uncomment the non-privileged version
+    // 3. comment out the privileged version
+    // 4. uncomment the non-privileged version
 
     // ---------------- BEGIN PRIVILEGED VERSION ----------------
     // If you only run on Greasemonkey 4+, you can remove the @require.
     // If you need not to run on Greasemonkey 4+,
-    // you can remove the @require line together with the following two lines
+    // you can remove the @require line together with the @grant GM.*s
     // and replace all "GM." with "GM_".
-    // Note that the "@grant GM_*"s are required for Tampermonkey in Chrome.
+    // Note that the "@grant GM_*"s are required for Tampermonkey in Chrome
+    // even if the corresponding "@grant GM.*"s and gm4-polyfill already exists,
+    // please let me know if you can figure out why.
 
     function copyAndHint(text) {
         GM.setClipboard(text);
